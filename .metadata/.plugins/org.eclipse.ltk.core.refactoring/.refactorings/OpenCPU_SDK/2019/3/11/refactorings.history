@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;OpenCPU_SDK/custom/sms/inc/ril_sms.h&apos; to &apos;sms.h&apos;" description="Rename resource &apos;ril_sms.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="custom/sms/inc/ril_sms.h" name="sms.h" stamp="1552570640902" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;OpenCPU_SDK/custom/sms/src/ril_sms.c&apos; to &apos;sms.c&apos;" description="Rename resource &apos;ril_sms.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="custom/sms/src/ril_sms.c" name="sms.c" stamp="1552570662636" updateReferences="true"/>
+</session>

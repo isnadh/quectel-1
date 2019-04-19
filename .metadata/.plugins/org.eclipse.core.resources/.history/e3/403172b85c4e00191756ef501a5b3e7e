@@ -1,0 +1,933 @@
+/*HEADER****************************************************************
+ ************************************************************************
+ ***
+ ***	 Copyright (c) 2018 HARMAN CONNECTED SERVICES
+ ***	 All rights reserved
+ ***
+ ***	This software embodies materials and concepts which are
+ ***	confidential to HARMAN CONNECTED SERVICES and is made available solely
+ ***	pursuant to the terms of a written license agreement with HARMAN CONNECTED SERVICES
+ ***
+ ***	Designed and Developed by Harman Connected Services for Hindustan Unilever
+ ***
+ ***	File:	 <file name.h>
+ ***
+ ***	Comments: Implementation of SMART WATER PURIFIER machine
+ ***	Comments about the file.
+ ***	-	Algorithm / logic explanation
+ ***	-	formula explanation
+ ***	-	inputs and outputs ofthis file
+ ***	-	etc etc.
+ ***
+ ***
+ ************************************************************************
+ *END*******************************************************************/
+
+#ifdef __MQTT_TEST__
+
+#include <string.h>
+#include <stdlib.h>
+#include "ril.h"
+#include "ril_util.h"
+#include "sms.h"
+#include "ril_location.h"
+#include "ril_telephony.h"
+#include "ril_system.h"
+#include "ril_http.h"
+#include "ril_network.h"
+#include "ql_stdlib.h"
+#include "ql_trace.h"
+#include "ql_error.h"
+#include "ql_uart.h"
+#include "ql_time.h"
+#include "ql_system.h"
+#include "ql_timer.h"
+#include "ql_gprs.h"
+#include "ql_socket.h"
+#include "ql_fs.h"
+#include "ql_wtd.h"
+#include "ql_gpio.h"
+#include "ql_spi.h"
+#include "ql_memory.h"
+#include "ql_eint.h"
+#include "cJSON.h"
+#include "MQTTPacket.h"
+//#include "fs.h"
+#include "debug.h"
+#include "common_vars.h"
+#include "Timer.h"
+#include "SecureSocket.h"
+#include "ipc.h"
+#include "sms.h"
+
+#define REST_MESSAGE_POST_STRING  "POST /%s/registrations/%s?api-version=2018-09-01-preview HTTP/1.1\r\n\
+		Host: global.azure-devices-provisioning.net:443\r\n\
+		Content-Type: application/json\r\n\
+		Content-Length: %d\r\n\
+		\r\n\
+		{\"registrationId\":\"%s\"}\r\n"
+
+#define REST_MESSAGE_PUT_STRING  "PUT /%s/registrations/%s/register?api-version=2018-09-01-preview HTTP/1.1\r\n\
+		Host: global.azure-devices-provisioning.net:443\r\n\
+		Content-Type: application/json\r\n\
+		Content-Length: %d\r\n\
+		\r\n\
+		{\"registrationId\":\"%s\"}\r\n"
+
+extern char REST_MESSAGE_POST[300];
+extern char REST_MESSAGE_PUT[300];
+extern u32 rechargebalance;
+extern u32 total_size;
+
+// ------Function declarations-------------------------------
+void publish_data(u32);
+void SMS_Initialize(void);
+extern char g_buf_recvd_data [RECVD_DATA_LENGTH];
+extern s32 Connect_Azure_IoT_host_socket(u8 host_id);
+extern void Init_display(void);
+extern s32 RIL_SSL_QSSLCERTIFICATE_WRITE(u8 *cert_type, u8 *cert_name, u32 cert_len, u8 timeout);
+extern s32 RIL_SSL_QSSLCERTIFICATE_DEL(u8 *cert_type);
+extern s32 RIL_SSL_QSSLCERTIFICATE_READ(u8 *cert_type);
+extern s32 RIL_SSL_QSSLCLOSE(u8 ssid);
+extern void Refresh_Communication_inprogress_Symbol(unsigned int colour);
+/********SPI TFT Interface**********/
+#define SPI_HARDWARE    1    // spi_usr_type = 0 is analog spi, spi_usr_type = 1 is hardware spi.
+
+char version_info[8] = {'&','$','@','#',HW_Version_COMM,HW_Version_CON,FW_Version_Major_COMM,FW_Version_Minor_COMM};
+
+/*-----	FLAGS	-----*/
+FLAGS FLAG = {0};
+
+/***************global variables*******************/
+char MId[18] = {0};
+char IMEI[20] = {0}; //received	imei from get_imei api
+char CCID[25] = {0}; //received ccid from get_ccid api
+
+char latitude_[10] = {'\0'};
+char longitude_[10] = {'\0'};
+
+//----- Service provide APN
+char m_apn[50] = {'\0'};
+//APN is chosen based on service provider..
+
+char *m_userid = NULL;
+char *m_passwd = NULL;
+
+u32 wtdid = 0;
+u8 file=0;
+/*----- GSM NETWORK -----*/
+u32 rssi =0;
+s8 RssiLevel = 0;
+s8 previous_rssival = 0;
+char service_provider_name[30] = {"4. Unknown"};
+char Operator_name[20] = {"Unknown"};
+char IMEINumber[20] = {"2. Unknown"};
+char CCIDNumber[25] = {"2. Unknown"};
+char latlong[30] = {'\0'};
+char firmware_upgraded_flag = 0;
+static void Init(void);
+static void SerialPort_Init(void);
+static void GPIO_Init (void);
+static void SPI_Init(void);
+extern char AZURE_IoT_device_ID[25];
+extern char AZURE_IoT_DPS_ID[25];
+static void CallBack_UART_MAIN_Hdlr(Enum_SerialPort port, Enum_UARTEventType msg, bool level, void* customizedPara);
+void Callback_Location(s32 result, ST_LocInfo* loc_info);
+static void Callback_External_Interrupt_Hdlr(Enum_PinName eintPinName, Enum_PinLevel pinLevel, void* customParam);
+u8 GPRS_Connect_Failed_Attempts_Count = 0;
+
+#define CERTIFICATE_COMMAND     0
+#define CERTIFICATE_CK0         1
+#define CERTIFICATE_CC0         2
+#define CERTIFICATE_CA0         3
+#define DID                     4
+#define DPS                     5
+#define CODE_UART               6
+
+u8 Certificate_File_Download_state = CERTIFICATE_COMMAND;
+u16 Cx0_File_Size = 0;
+u32 Code_File_Size = 0;
+char coresdkpbuf[100]={0};
+/***************************************************************************
+ * Function: Get_Signal_RSSI
+ * Description: Process the rssi data for the signal strength.
+ ****************************************************************************/
+void Get_Signal_RSSI(void)
+{
+	u32 nw_signal_bit_err_code =0;
+	if(FLAG.SIMCARD_REGISTERED == TRUE)//Read RSSI only if SIM Card is Present and detected
+	{
+		RIL_NW_GetSignalQuality(&rssi, &nw_signal_bit_err_code);
+
+		if(!(rssi>0 && rssi <32))
+			rssi = 0;
+		RssiLevel = (s8)rssi;
+		//compare with previous with current rssi level if same do not update on lcd
+		if(previous_rssival != rssi)
+		{
+			Ql_OS_SendMessage(3, MSG_ID_GW_STATE,GW_STATE_LCD_DISPLAY,TFT_STATE_DRAW_ANTENNA_SYMBOL);
+			if(rssi<10 && (FLAG.RSSI_LOW_DETECT == FALSE)) // RSSI fall below 10 so need to publish this event
+			{
+				FLAG.RSSI_LOW_DETECT = TRUE;
+				if(FLAG.CON_MSG_PUBLISH_PENDING == FALSE)//If already connected to cloud and connectivity status is already published then do this for new RSSI level
+					PUBLISH_RESPONSE_REQ_source |= SCHEDULE_PUBLISH_CONNECTIVITY_LOW;
+			}
+			else // RSSI is above 10
+			{
+				if(FLAG.RSSI_LOW_DETECT == TRUE) // Reset the RSSI Low flag in case it is already set to true
+				{
+					FLAG.RSSI_LOW_DETECT = FALSE;
+					if(FLAG.CON_MSG_PUBLISH_PENDING == FALSE)//If already connected to cloud and connectivity status is already published then do this for new RSSI level
+						PUBLISH_RESPONSE_REQ_source |= SCHEDULE_PUBLISH_CONNECTIVITY_ON;
+				}
+			}
+		}
+	}
+}
+/*****************************************************************************
+//	@Function Name	:	GPIO_Init
+//
+//	@Description	:	Initializes the GPIO pin / peripheral registers
+//
+//	@Input		:	None
+//
+//	@Return		:	None
+//
+//	@Assumptions	:	None
+ ****************************************************************************/
+static void GPIO_Init (void)
+{
+	// Initialize the GPIO pin (output / input, level, pullup / pulldn)
+	//Ql_GPIO_Init(PINNAME_NETLIGHT, PINDIRECTION_OUT, PINLEVEL_HIGH, PINPULLSEL_PULLUP); // Not used in this design
+
+	//----------------- OUTPUT PINS --------------------------------------------------
+	Ql_GPIO_Init(PINNAME_DCD, PINDIRECTION_OUT, PINLEVEL_HIGH,  PINPULLSEL_PULLUP); //used to control Backlight of LCD
+	Ql_GPIO_Init(PINNAME_CTS, PINDIRECTION_OUT, PINLEVEL_HIGH, PINPULLSEL_PULLUP); //used to control DATA/COMMAND pin of LCD
+	Ql_GPIO_Init(PINNAME_RTS, PINDIRECTION_OUT, PINLEVEL_HIGH, PINPULLSEL_PULLUP); //used to control RESET pin of LCD
+	Ql_GPIO_Init(PINNAME_RI,  PINDIRECTION_OUT, PINLEVEL_HIGH, PINPULLSEL_PULLUP); //used to control NRESET pin control module
+	//----------------- INPUT PINS --------------------------------------------------
+	//Turn ON LCD backlight
+	Ql_GPIO_SetLevel(PINNAME_DCD, PINLEVEL_HIGH); // LCD Backlight ON
+	//----------------- External Interrupt INPUT PINS --------------------------------------------------
+	Ql_EINT_Register(PINNAME_DTR,Callback_External_Interrupt_Hdlr,NULL); // This function registers an EINT I/O, and specifies the interrupt handler.
+	Ql_EINT_Init(PINNAME_DTR, EINT_LEVEL_TRIGGERED,0,5,0);
+}
+
+/*****************************************************************
+ * Function: CallBack_UART_MAIN_Hdlr
+ *
+ * Description:
+ *		CallBack_UART_MAIN_Hdlr	data recived on UART_MAIN_PORT
+ 		!!! ATTENTION --> Used only in development / debug.. need tobe commented out in RELEASE
+ * Parameters:
+ *
+ * Return:
+ *
+ *****************************************************************/
+static void CallBack_UART_MAIN_Hdlr(Enum_SerialPort port, Enum_UARTEventType msg, bool level, void* customizedPara)
+{
+	char c[4];
+	char UART_MAIN_Read_Buffer[2000] = {0x00};
+	char Read_Uart_buffer_one[2000];
+	char Read_Uart_Certificate_file_Buffer[2000];
+	s32 ret = -1;
+
+	u16 Read_Uart_Buffer_Temp_len;
+	/*------------------------------------------------------------------------------*/
+	float RCbalance_now =0;
+	Ql_memset(Read_Uart_buffer_one, 0x0, sizeof(Read_Uart_buffer_one)); // Clear the MAIN READ buffer by filling it with all 0x00
+	switch(msg)
+	{
+	case EVENT_UART_READY_TO_READ :
+		Ql_memset(UART_MAIN_Read_Buffer, 0x0, sizeof(UART_MAIN_Read_Buffer)); // Clear the MAIN READ buffer by filling it with all 0x00
+
+		Ql_UART_Read(UART_PORT_MAIN, UART_MAIN_Read_Buffer, sizeof(UART_MAIN_Read_Buffer));// Reat the UART receive buffer in MAIN READ buffer
+
+		//Send command CK0<file size> for ex."CK01706".This command is used for to store Client Private Key Liscence file.
+		/*******************************************************/
+		/*********Check command to write the CERTIFICATE******************/
+		/*******************************************************/
+		if((UART_MAIN_Read_Buffer[0] == 'C') && ((UART_MAIN_Read_Buffer[1] == 'K') || (UART_MAIN_Read_Buffer[1] == 'C') || (UART_MAIN_Read_Buffer[1] == 'A')) && (UART_MAIN_Read_Buffer[2] == '0'))
+		{
+			if(Certificate_File_Download_state == CERTIFICATE_COMMAND)
+			{
+				FLAG.SUSPEND_IPC_COMMUNICATION = TRUE;
+				int j=3;
+				for(int i =0; i<4;i++)
+				{
+					c[i]=UART_MAIN_Read_Buffer [j++];
+				}
+				Cx0_File_Size = Ql_atoi(c);
+				if(UART_MAIN_Read_Buffer[1] == 'K')
+					Certificate_File_Download_state = CERTIFICATE_CK0;
+				else if(UART_MAIN_Read_Buffer[1] == 'C')
+					Certificate_File_Download_state = CERTIFICATE_CC0;
+				else if(UART_MAIN_Read_Buffer[1] == 'A')
+					Certificate_File_Download_state = CERTIFICATE_CA0;
+				APP_DEBUG("\r\n--> OK \r\n");// To infortm the external script about readiness to receive the file
+				Ql_memset(Read_Uart_Certificate_file_Buffer, 0, sizeof(Read_Uart_Certificate_file_Buffer));
+				break;
+			}
+		}
+		if(((UART_MAIN_Read_Buffer[0] == 'D') && (UART_MAIN_Read_Buffer[1] == 'I') && (UART_MAIN_Read_Buffer[2] == 'D') ))
+		{
+			if(Certificate_File_Download_state == CERTIFICATE_COMMAND)
+			{
+				Certificate_File_Download_state = DID;
+				APP_DEBUG("\r\n--> OK \r\n");// To infortm the external script about readiness to receive the file
+				Ql_memset(Read_Uart_Certificate_file_Buffer, 0, sizeof(Read_Uart_Certificate_file_Buffer));
+				break;
+			}
+		}
+		if(((UART_MAIN_Read_Buffer[0] == 'D') && (UART_MAIN_Read_Buffer[1] == 'P') && (UART_MAIN_Read_Buffer[2] == 'S') ))
+		{
+			if(Certificate_File_Download_state == CERTIFICATE_COMMAND)
+			{
+				Certificate_File_Download_state = DPS;
+				APP_DEBUG("\r\n--> OK \r\n");// To infortm the external script about readiness to receive the file
+				Ql_memset(Read_Uart_Certificate_file_Buffer, 0, sizeof(Read_Uart_Certificate_file_Buffer));
+				break;
+			}
+		}
+		/*******************************************************/
+		/*********WRITE CLIENT KEY CERTIFICATE******************/
+		/*******************************************************/
+		//Send command CA0<file size> for ex."CA01206". This command is used for to store RootCA Liscence file.
+		if(Certificate_File_Download_state == CERTIFICATE_CK0)// State machine is in Receive CK0 file and we received data on UART
+		{
+			Ql_strcpy(Read_Uart_Certificate_file_Buffer,UART_MAIN_Read_Buffer);  //copy received file to Read_Uart_Certificate_file_Buffer
+			Ql_Sleep(1000);
+			//The Use of Read_Uart_Certificate_file_Buffer and after that Read_Uart_buffer_one is due to, when data sending from UART at first time in Read_Uart_Certificate_file_Buffer
+			//It takes only upto 370 Bytes. So, we are using "Read_Uart_buffer_one" to copy all bytes and then we merge both strings.
+			Ql_UART_Read(UART_PORT_MAIN, Read_Uart_buffer_one, sizeof(Read_Uart_buffer_one)); // again read the uart buffer for remaining data to received in Read_Uart_buffer_one
+			Ql_strcat(Read_Uart_Certificate_file_Buffer,Read_Uart_buffer_one);    //Merge two strings and store into Read_Uart_Certificate_file_Buffer
+			Read_Uart_Buffer_Temp_len = Ql_strlen(Read_Uart_Certificate_file_Buffer); // Find out the buffer length
+			if(Cx0_File_Size == Read_Uart_Buffer_Temp_len)   //if file copied successfully then store file
+			{
+				ret = RIL_SSL_QSSLCERTIFICATE_DEL("CK0");	//First Delete file if available.
+				ret= RIL_SSL_QSSLCERTIFICATE_WRITE("CK0",Read_Uart_Certificate_file_Buffer,Read_Uart_Buffer_Temp_len,100); //Write Licence file in NVRAM
+
+				if(ret == RIL_AT_SUCCESS)
+				{
+					ret = RIL_SSL_QSSLCERTIFICATE_READ("CK0");//Read file from NVRAM
+				}
+			}
+			if(ret == RIL_AT_SUCCESS)
+			{
+				APP_DEBUG("<-- PASS -->\r\n");//Return PASS indicate success in file Read and upload
+			}
+			else
+			{
+				APP_DEBUG("<-- FAIL -->\r\n");//Return FAIL indicate error in file Read and upload
+			}
+			Certificate_File_Download_state =CERTIFICATE_COMMAND;
+
+		}
+
+		//Send command CK0<file size> for ex."CK01270". This command is used for to store Public Liscence file.
+		/*******************************************************/
+		/*********WRITE CLIENT PUBLIC CERTIFICATE******************/
+		/*******************************************************/
+		if(Certificate_File_Download_state == CERTIFICATE_CC0)// State machine is in Receive CK0 file and we received data on UART
+		{
+			Ql_strcpy(Read_Uart_Certificate_file_Buffer,UART_MAIN_Read_Buffer);  //copy received file to Read_Uart_Certificate_file_Buffer
+			Ql_Sleep(1000);
+			//The Use of Read_Uart_Certificate_file_Buffer and after that Read_Uart_buffer_one is due to, when data sending from UART at first time in Read_Uart_Certificate_file_Buffer
+			//It takes only upto 370 Bytes. So, we are using "Read_Uart_buffer_one" to copy all bytes and then we merge both strings.
+			Ql_UART_Read(UART_PORT_MAIN, Read_Uart_buffer_one, sizeof(Read_Uart_buffer_one)); // again read the uart buffer for remaining data to received in Read_Uart_buffer_one
+			Ql_strcat(Read_Uart_Certificate_file_Buffer,Read_Uart_buffer_one);    //Merge two strings and store into Read_Uart_Certificate_file_Buffer
+			Read_Uart_Buffer_Temp_len = Ql_strlen(Read_Uart_Certificate_file_Buffer); // Find out the buffer length
+			if(Cx0_File_Size == Read_Uart_Buffer_Temp_len)   //if file copied successfully then store file
+			{
+				ret = RIL_SSL_QSSLCERTIFICATE_DEL("CC0");	//First Delete file if available.
+				ret = RIL_SSL_QSSLCERTIFICATE_WRITE("CC0",Read_Uart_Certificate_file_Buffer,Read_Uart_Buffer_Temp_len,100);//Write Licence file in NVRAM
+
+				if(ret == RIL_AT_SUCCESS)
+				{
+					ret = RIL_SSL_QSSLCERTIFICATE_READ("CC0");//Read file from NVRAM
+				}
+			}
+			if(ret == RIL_AT_SUCCESS)
+			{
+				APP_DEBUG("<-- PASS -->\r\n");//Return PASS indicate success in file Read and upload
+			}
+			else
+			{
+				APP_DEBUG("<-- FAIL -->\r\n");//Return FAIL indicate error in file Read and upload
+			}
+
+			Certificate_File_Download_state =CERTIFICATE_COMMAND;
+
+		}
+
+		//Send command CA0<file size> for ex."CA01206". This command is used for to store RootCA Liscence file.
+		/*******************************************************/
+		/*********WRITE ROOT CA CERTIFICATE******************/
+		/*******************************************************/
+		if(Certificate_File_Download_state == CERTIFICATE_CA0)// State machine is in Receive CK0 file and we received data on UART
+		{
+			Ql_strcpy(Read_Uart_Certificate_file_Buffer,UART_MAIN_Read_Buffer);  //copy received file to Read_Uart_Certificate_file_Buffer
+			Ql_Sleep(1000);
+			//The Use of Read_Uart_Certificate_file_Buffer and after that Read_Uart_buffer_one is due to, when data sending from UART at first time in Read_Uart_Certificate_file_Buffer
+			//It takes only upto 370 Bytes. So, we are using "Read_Uart_buffer_one" to copy all bytes and then we merge both strings.
+			Ql_UART_Read(UART_PORT_MAIN, Read_Uart_buffer_one, sizeof(Read_Uart_buffer_one)); // again read the uart buffer for remaining data to received in Read_Uart_buffer_one
+			Ql_strcat(Read_Uart_Certificate_file_Buffer,Read_Uart_buffer_one);    //Merge two strings and store into Read_Uart_Certificate_file_Buffer
+
+			Read_Uart_Buffer_Temp_len = Ql_strlen(Read_Uart_Certificate_file_Buffer); // Find out the buffer length
+			if(Cx0_File_Size == Read_Uart_Buffer_Temp_len)   //if file copied successfully then store file
+			{
+				ret = RIL_SSL_QSSLCERTIFICATE_DEL("CA0");//First Delete file if available.
+				ret = RIL_SSL_QSSLCERTIFICATE_WRITE("CA0",Read_Uart_Certificate_file_Buffer,Read_Uart_Buffer_Temp_len,100);//Write Licence file in NVRAM
+
+				if(ret == RIL_AT_SUCCESS)
+				{
+					ret = RIL_SSL_QSSLCERTIFICATE_READ("CA0");//Read file from NVRAM
+				}
+			}
+
+			if(ret == RIL_AT_SUCCESS)
+			{
+				APP_DEBUG("<-- PASS -->\r\n");//Return PASS indicates success in file Read and upload
+			}
+			else
+			{
+				APP_DEBUG("<-- FAIL -->\r\n");//Return PASS indicates error in file Read and upload
+			}
+			Certificate_File_Download_state =CERTIFICATE_COMMAND;
+
+		}
+
+		//Send command "DID" to store device ID
+		/*******************************************************/
+		/*****************STORE DEVICE ID***********************/
+		/*******************************************************/
+		if(Certificate_File_Download_state == DID)
+		{
+			if(Ql_strlen(UART_MAIN_Read_Buffer) == 15)
+			{
+				Ql_strcpy(Read_Uart_Certificate_file_Buffer,UART_MAIN_Read_Buffer);
+				Ql_strcpy(AZURE_IoT_device_ID,Read_Uart_Certificate_file_Buffer);
+				Store_IoT_Persistent_Data();
+				Read_IoT_Persistent_Data();
+				if(Ql_strcmp(AZURE_IoT_device_ID, Read_Uart_Certificate_file_Buffer) == 0)
+				{
+					APP_DEBUG("<-- PASS -->\r\n");//Return PASS indicates success in file Read and upload
+				}
+				else
+				{
+					APP_DEBUG("<-- FAIL -->\r\n");//Return PASS indicates error in file Read and upload
+				}
+				Certificate_File_Download_state = CERTIFICATE_COMMAND;
+			}
+		}
+
+		//Send command "DPS" to store DPS_ID
+		/*******************************************************/
+		/*****************STORE DPS ID***********************/
+		/*******************************************************/
+		if(Certificate_File_Download_state == DPS)
+		{
+			Ql_strcpy(Read_Uart_Certificate_file_Buffer,UART_MAIN_Read_Buffer);
+			Ql_strcpy(AZURE_IoT_DPS_ID,Read_Uart_Certificate_file_Buffer);
+			Ql_memset(AZURE_assigned_IoT_Hub, 0x0, sizeof(AZURE_assigned_IoT_Hub));//Remove assigned IoT Hub information
+			Store_IoT_Persistent_Data();
+			Read_IoT_Persistent_Data();
+			if(Ql_strcmp(AZURE_IoT_DPS_ID, Read_Uart_Certificate_file_Buffer) == 0)
+			{
+				APP_DEBUG("<-- PASS -->\r\n");//Return PASS indicates success in file Read and upload
+				//Reset the HW.. to have these variables in effect..
+				IPC_CMD_REQ_source|=SCHEDULE_POWER_DOWN_WITH_BACKUP;
+			}
+			else
+			{
+				APP_DEBUG("<-- FAIL -->\r\n");//Return PASS indicates error in file Read and upload
+			}
+			FLAG.SUSPEND_IPC_COMMUNICATION = FAIL; // Restore the IPC state machine
+			Certificate_File_Download_state = CERTIFICATE_COMMAND;
+		}
+
+#ifdef DEBUG_MSG
+		//!!! ATTENTION --> Used only in development / debug.. need tobe commented out in RELEASE
+		//--------------------------------------------------
+		// // GET_IDENTITY
+		if(UART_MAIN_Read_Buffer[0] == 'I')
+		{
+
+			APP_DEBUG("\r\n--> Identity command received.\r\n\n");
+
+			IPC_CMD_REQ_source |= SCHEDULE_IPC_GET_IDENTITY_CMD; // Get identification commmand
+		}
+		//---------------------------------------------------
+		// Water Balance recharge
+		if(UART_MAIN_Read_Buffer[0] == 'w')
+		{
+			char hrcbal[10] = "1.0";
+			RCbalance_now = Ql_atof((const char *)hrcbal);
+			rechargebalance = RCbalance_now * 10;
+			if(((water_balance) + (rechargebalance)) <= MAX_ALLOWED_WATER_BALANCE)
+			{
+				Ql_strcpy(cmdrcbal,hrcbal);
+
+				APP_DEBUG("\r\n--> TopUp Recharge for %s gallons.-->\r\n",cmdrcbal);
+
+				IPC_CMD_REQ_source |= SCHEDULE_IPC_SET_WATER_DATA_CMD; // Schedule IPC command towards Control Module
+			}
+			else
+				rechargebalance =0;
+		}
+		//---------------------------------------------------
+		// // Lock
+		if(UART_MAIN_Read_Buffer[0] == 'l')
+		{
+
+			APP_DEBUG("\r\n--> Lock command received.\r\n\n");
+
+			IPC_CMD_REQ_source |= SCHEDULE_IPC_LOCK_CMD; // Set water balance data command is scheduled
+		}
+		//---------------------------------------------------
+		// // UnLock
+		if(UART_MAIN_Read_Buffer[0] == 'u')
+		{
+
+			APP_DEBUG("\r\n--> UnLock command received.\r\n\n");
+
+			IPC_CMD_REQ_source |= SCHEDULE_IPC_UNLOCK_CMD; // Set water balance data command is scheduled
+		}
+		//---------------------------------------------------
+		// Reset Device to factory mode configuration
+
+		if(UART_MAIN_Read_Buffer[0] == 'r')
+		{
+
+			APP_DEBUG("\r\n--> Reset Device...\r\n\n");
+
+			rechargebalance = 0;
+			IPC_CMD_REQ_source |= SCHEDULE_IPC_RESET_WATER_DATA_CMD; // Schedule IPC command towards Control Module
+			FLAG.DEVICE_RESET_SCHEDULED = TRUE;
+		}
+		//---------------------------------------------------
+		// Force FOTA
+		if(UART_MAIN_Read_Buffer[0] == 'x')
+		{
+			Ql_strcpy(FOTA_URL, " https://s3.amazonaws.com/harmanfota/HUL/APPGS3MDM32A01_Upgrade_Package.bin");
+			FLAG.READY_TO_INITIATE_FOTA_DOWNLOAD = TRUE;
+		}
+		//---------------------------------------------------
+#endif
+		Ql_UART_ClrRxBuffer(UART_PORT_MAIN);
+		break;
+
+	default	:
+		break;
+	}
+}
+
+
+/*****************************************************************
+ * Function: Callback_Location
+ *
+ * Description:
+ *		Callback_Location function gives the Location Latitude and Longitude data of Device
+ * Parameters:
+ *		 s32 result,  ST_LocInfo* loc_info structure containing Lat and Long
+ * Return:
+ *		void
+ *****************************************************************/
+void Callback_Location(s32 result, ST_LocInfo* loc_info)
+{
+#ifdef DEBUG_MSG
+	APP_DEBUG("\r\n<-- Module Latitude :%f , Module Longitude :%f -->\r\n", loc_info->latitude,loc_info->longitude);
+#endif
+	Ql_sprintf(latitude_, "%f",loc_info->latitude);
+	Ql_sprintf(longitude_,"%f",loc_info->longitude);
+
+	Ql_OS_SendMessage(3, MSG_ID_GW_STATE,GW_STATE_LCD_DISPLAY,TFT_STATE_DRAW_DIAG_INIT);// Refresh LatLog info on Diag Screen
+	FLAG.LOCATION_DATA_GATHERED = TRUE;
+
+	Store_Persistent_Data();   //Write permanent data to flash file for Latitude and Longitude data
+	PUBLISH_RESPONSE_REQ_source |= SCHEDULE_PUBLISH_LAT_LONG ; // Schedule a MQTT publish event for Latitude and Longitude data
+}
+
+
+/*****************************************************************
+ * Function: SerialPort_Init
+ *
+ * Description:
+ *		SerialPort_Init
+ *		 Register the UART_Main Port and open the main port
+ *
+ * Parameters:
+ *
+ * Return:
+ *
+ *****************************************************************/
+static void SerialPort_Init(void)
+{
+	s32 iResult = 0;
+
+	//Register UART_PORT_MAIN
+	iResult = Ql_UART_Register(UART_PORT_MAIN, CallBack_UART_MAIN_Hdlr, NULL);
+#ifdef INOUT
+	APP_DEBUG("\n\r<-- [%s] UART_PORT_MAIN register -->\r\n", (iResult ==  0) ? "SUCCESS" : "FAIL");
+#endif
+
+	//Open UART_PORT_MAIN
+	iResult = Ql_UART_Open(UART_PORT_MAIN, BAUDRATE_PORT_MAIN, FC_NONE);
+#ifdef INOUT
+	APP_DEBUG("\n\r<-- [%s] UART_PORT_MAIN Open -->\r\n", (iResult ==  0) ? "SUCCESS" : "FAIL");
+#endif
+
+}
+
+
+/*****************************************************************
+ * Function: SPI_Init
+ *
+ * Description:
+ *		SPI Port_Init
+ *		 Init the SPI Port and Config the port
+ *
+ * Parameters:
+ *
+ * Return:
+ *
+ *****************************************************************/
+static void SPI_Init(void)
+{
+	s32 ret = 0;
+
+	//Init SPI PORT
+	ret = Ql_SPI_Init(USR_SPI_CHANNAL,PINNAME_PCM_IN,PINNAME_PCM_SYNC,PINNAME_PCM_OUT,PINNAME_PCM_CLK,SPI_HARDWARE);
+#ifdef INOUT
+	APP_DEBUG("\n\r<-- [%s] SPI Init -->\r\n", (ret < 0)?"FAIL" : "SUCCESS");
+#endif
+
+	//Config SPI PORT
+	ret = Ql_SPI_Config(USR_SPI_CHANNAL,1,0,0,10000); //config sclk about 10MHz;
+#ifdef INOUT
+	APP_DEBUG("\n\r<-- [%s] SPI Config -->\r\n", (ret < 0)?"FAIL" : "SUCCESS");
+#endif
+}
+
+
+/*****************************************************************
+ * Function: Init(void)
+ *
+ * Description:
+ *		Int Different hardware peripherals to be used
+ *
+ * Parameters:
+ *
+ * Return:
+ *
+ *****************************************************************/
+static void Init(void)
+{
+	GPIO_Init();	// Init the GPIO pins and configure them
+	SerialPort_Init();//Register the UART_Main Port and open the main port
+	InitIPComm();	//Init UART for IPC communication
+	SPI_Init();	//Init the SPI Port and Config the port
+	Timer_register();
+	Ql_memset(coresdkpbuf, 0, sizeof(coresdkpbuf));
+	Ql_GetSDKVer((u8*)coresdkpbuf, sizeof(coresdkpbuf));
+#ifdef DEBUG_MSG
+	APP_DEBUG("<-- SDK vesrion  :%s -->\r\n", coresdkpbuf);
+#endif
+	Ql_memset(coresdkpbuf, 0, sizeof(coresdkpbuf));
+	Ql_GetCoreVer((u8*)coresdkpbuf, sizeof(coresdkpbuf));
+#ifdef DEBUG_MSG
+	APP_DEBUG("<-- M66 Core     :%s -->\r\n", coresdkpbuf);
+#endif
+
+	fileSys_SetFileSystem(FALSE); // False -> No filesystem Format
+}
+
+/*****************************************************************
+ * Function: publish_data(u32 param2)
+ *
+ * Description:
+ *		 Publish data using MQTT
+ *
+ * Parameters:u32 param2 --> Parameter to be published
+ *
+ * Return:
+ *
+ *****************************************************************/
+void publish_data(u32 param2)
+{
+	MQTT_Send_Publish(SSID_HOST_AZURE,param2);
+}
+
+
+/*****************************************************************
+ * Function: Callback_External_Interrupt_Hdlr
+ *
+ * Description:
+ *		External Interrupt Handler
+ *
+ * parameter:
+ *
+ * Return:
+ *
+ *****************************************************************/
+static void Callback_External_Interrupt_Hdlr(Enum_PinName eintPinName, Enum_PinLevel pinLevel, void* customParam)
+{
+	//mask the specified EINT pin.
+	/*Ql_EINT_Mask(PINNAME_DTR);
+
+	if((Ql_EINT_GetLevel(eintPinName) == 0) && (FLAG.SKIP_POWER_OFF_ALERT == FALSE) && (FLAG.MQTT_POWER_ON_MSG_PUBLISHED == TRUE))// To avoid false power off alert capture
+	{
+#ifdef INOUT
+		APP_DEBUG("<--Eint callback: pin(%d), levle(%d)-->\r\n",eintPinName,pinLevel);
+#endif
+		//Turn OFF LCD backlight
+		Ql_GPIO_SetLevel(PINNAME_DCD, PINLEVEL_LOW); // LCD Backlight OFF
+		Store_Persistent_Data();   //Write permanent data to flash file
+		Write_Error_Messages();
+		//Send power OFF msg to cloud
+		Ql_OS_SendMessage(0,MSG_ID_GW_STATE,GW_STATE_PUBLISH_DATA, MQTT_POWER_OFF);
+
+		FLAG.MQTT_POWER_OFF_MSG_PUBLISHED = TRUE;
+		FLAG.MQTT_POWER_ON_MSG_PUBLISHED = FALSE;
+	}
+	else if((Ql_EINT_GetLevel(eintPinName) == 1) && (FLAG.MQTT_POWER_OFF_MSG_PUBLISHED == TRUE))// This will help to send power-ON message .. power cycled without resetting MCU ( thanks to super-cap)
+	{
+#ifdef INOUT
+		APP_DEBUG("<--Eint callback: pin(%d), levle(%d)-->\r\n",eintPinName,pinLevel);
+#endif
+		//Turn ON LCD backlight
+		Ql_GPIO_SetLevel(PINNAME_DCD, PINLEVEL_HIGH); // LCD Backlight ON
+
+		FLAG.MQTT_POWER_ON_MSG_PUBLISHED = TRUE;
+		FLAG.MQTT_POWER_OFF_MSG_PUBLISHED = FALSE;
+	}
+	//unmask the specified EINT pin
+	Ql_EINT_Unmask(PINNAME_DTR);*/
+}
+
+
+/*****************************************************************
+ * Function: proc_main_task(u32 taskId)
+ *
+ * Description:
+ *		 Send sdata to LCD over SPI
+ *
+ * Parameters:u32 param2 --> item to be displayed on LCD
+ *
+ * Return:
+ *
+ *****************************************************************/
+void proc_main_task(s32 taskId)
+{
+	s32 ret = -1;
+	int i;
+	char temp_variable[50] = {"\0"};
+	ST_MSG taskMsg;
+
+	//----- Initialize & open HW peripherals -----
+	Init();
+
+	// Do not remove the delay
+	Ql_Sleep(1000);
+
+	//----- START MESSAGE LOOP OF THIS TASK -----
+	while(TRUE)
+	{
+		Ql_memset(&taskMsg, 0x0, sizeof(ST_MSG)); // Clear the task message buffer by filling it all with 0x00
+
+		// Blocks until a message is available in queue.
+		Ql_OS_GetMessage (&taskMsg);
+		switch(taskMsg.message)
+		{
+		case MSG_ID_RIL_READY://This is internal message calls
+		{
+			Ql_RIL_Initialize(); // MUST call this function
+			Read_Persistent_Data();  //Read Permanent data from flash
+			Read_IoT_Persistent_Data();  //Read Permanent IoT data from flash
+			Read_Fault_Flag_File();	//Read Stored Faults
+			//Give back the the Control LCD backlight to CON Module
+			SMS_Initialize();
+			// Start 1 Sec periodic timer..
+			Ql_Timer_Start(Timer_SendTimeOut, Timer_SendTimeOut_Interval,TRUE);
+		}
+
+		break;
+
+		case MSG_ID_URC_INDICATION:
+		{
+			switch (taskMsg.param1)
+			{
+			case URC_SIM_CARD_STATE_IND:
+			{
+				// Status: 0 = SIM card not inserted
+				//	 2 = Need to input PIN code
+				//	 3 = Need to input PUK code
+				//	 9 = SIM card is not recognized
+				//
+				if(SIM_STAT_NOT_INSERTED == taskMsg.param2)
+				{
+#ifdef DEBUG_MSG
+					APP_DEBUG("\r<-- SIM card is not present -->\r\n");
+
+#endif
+					GetLocalTime_UTC(time_stamp, local_time);
+					CRC_Token ^= time_stamp[0];
+					IPC_CMD_REQ_source |= SCHEDULE_IPC_GET_IDENTITY_CMD; // Schedule the Get identification commmand to pass this token to Control Module
+				}
+				else
+				{
+					FLAG.SIMCARD_AVAILABLE = TRUE; // SIM CARD Detected.. might be registered or not registered.
+#ifdef DEBUG_MSG
+					APP_DEBUG("\r\n<-- SIM CARD PRESENT -->\r\n");
+#endif
+				}
+			}
+			break;
+
+			case URC_GSM_NW_STATE_IND:
+			{
+				// Check Network Signal Quality
+				Get_Signal_RSSI();
+
+				if (NW_STAT_REGISTERED == taskMsg.param2 || NW_STAT_REGISTERED_ROAMING == taskMsg.param2)
+				{
+#ifdef INOUT
+					APP_DEBUG("<-- [SUCCESS]: Register to GSM network -->\r\n");
+#endif
+					// Get IMEI number
+					RIL_GetIMEI(temp_variable);
+					//The IMEI is a 15 digit number starting with new line in the variable.
+					//Sometimes it is observed that an extra digit got read so limit the read to 15 digits only.
+					for(i=2; i<17 ;i++)
+						IMEI[i-2] = temp_variable[i];
+					IMEI[i-2] = '\0';
+#
+#ifdef DEBUG_MSG
+					APP_DEBUG("\r\n<-- IMEI = %s -->\r\n", IMEI);
+#endif
+					Ql_sprintf(IMEINumber,"%s %s","2.",IMEI);   //copy the imei number to array for dispaly on lcd
+
+					// Get Service provider Name from SIM
+					RIL_SIM_GetSPN((char*)&temp_variable,&ret);
+					for(i =1; i <30 ; i++) // Trim the servic eprovider name ..
+					{
+						if((temp_variable[i]=='"') || (temp_variable[i]=='\0'))
+						{
+							temp_variable[i] = '\0';
+							break;
+						}
+					}
+
+					// Get Carrier Operator Name to which currently connected
+					RIL_NW_GetOperator((char*)&Operator_name);
+					for(i =0; i <30 ; i++) // Trim the servic eprovider name ..
+					{
+						if((Operator_name[i]=='"') || (Operator_name[i]=='\0') || (Operator_name[i]==' '))
+						{
+							Operator_name[i] = '\0';
+							break;
+						}
+					}
+					Ql_sprintf(service_provider_name,"4. %s %s",&temp_variable[1], Operator_name);   //copy the imei number to array for dispaly on lcd
+
+					//Assign APN based on Service provider..
+					if(Ql_strcmp(&temp_variable[1], "Aeris") == 0)
+						Ql_strcpy(m_apn,"iot-eu.aer.net");
+					else if(Ql_strcmp(&temp_variable[1], "Idea") == 0)
+						Ql_strcpy(m_apn,"internet");
+					else if(Ql_strcmp(&temp_variable[1], "Vodafone") == 0)
+						Ql_strcpy(m_apn,"www");
+					else if(Ql_strcmp(&temp_variable[1], "Airtel") == 0)
+						Ql_strcpy(m_apn,"airtelgprs.com");
+					else if(Ql_strcmp(&temp_variable[1], "Aircel") == 0)
+						Ql_strcpy(m_apn,"aircelgprs.com");
+					else
+						Ql_strcpy(m_apn,"www");
+					if(FLAG.DIGNOSTIC_MODE == TRUE)
+					{
+						Ql_OS_SendMessage(3, MSG_ID_GW_STATE,GW_STATE_LCD_DISPLAY,TFT_STATE_DRAW_DIAG_INIT);// Refresh LatLog info on Diag Screen
+					}
+#ifdef DEBUG_MSG
+					APP_DEBUG("<-- Operator Name = %s -->\r\n", Operator_name);
+#endif
+
+					//Get CCID (SIM number) Number Printed on SIM card
+					RIL_SIM_GetCCID(temp_variable);
+					for(i=0; i<20 ;i++)            //CCID number consist 19 or 20 digit Numbers
+						CCID[i] = temp_variable[i];
+					Ql_sprintf(CCIDNumber,"%s %s","2.",CCID);   //copy the ccid number to array for dispaly on lcd
+#ifdef DEBUG_MSG
+					APP_DEBUG("<-- CCID = %s -->\r\n", CCID);
+#endif
+					// Get Local time from Network
+					GetNW_Time();
+				}
+				else
+				{
+#ifdef DEBUG_MSG
+					APP_DEBUG("<-- GSM network status:%d -->", taskMsg.param2);
+					if(taskMsg.param2 == 0)
+						APP_DEBUG("Not Registered -->\r\n");
+					if(taskMsg.param2 == 2)
+						APP_DEBUG("Not Registered and Searching -->\r\n");
+					if(taskMsg.param2 == 3)
+						APP_DEBUG("Registration denied -->\r\n");
+
+#endif
+					// status: 0 = Not registered, module unable to search a new operator
+					//	 2 = Not registered, but module is currently searching a new operator
+					//	 3 = Registration denied
+				}
+			}
+			break;
+			case URC_SSL_RECV_IND:
+			{
+#ifdef INOUT
+				APP_DEBUG("\n\r<-- Response Received from CID [%d] SSID[%d]-->\r\n",(taskMsg.param2>>8), (taskMsg.param2 & 0xFF));
+#endif
+				ret = SSL_Recv_Data(taskMsg.param2);
+			}
+			break;
+
+			default:
+				break;
+			}
+		}
+		break;
+		default:
+			break;
+		}
+	}
+}
+
+/**************************************************************
+ * the 1st sub task
+ ***************************************************************/
+void proc_subtask1(s32 TaskId)
+{
+	ST_MSG subtask1_msg;
+
+	while(1)
+	{
+		Ql_OS_GetMessage(&subtask1_msg);
+		switch(subtask1_msg.message)
+		{
+		case MSG_ID_GW_STATE:
+		{
+			GW_sf_state = subtask1_msg.param1;
+			switch (GW_sf_state)
+			{
+			default:
+				break;
+			}
+			break;
+		}
+
+		default:
+			break;
+		}
+	}
+}
+
+
+#endif

@@ -1,0 +1,411 @@
+23:30:11 **** Build of configuration Debug for project OpenCPU_SDK ****
+"D:\\TEST\\OpenCPU_SDK\\make\\make.exe" all 
+'Building file: ../ril/src/ril_alarm.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_alarm.d" -MT"ril/src/ril_alarm.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_alarm.o" "../ril/src/ril_alarm.c"
+'Finished building: ../ril/src/ril_alarm.c'
+' '
+'Building file: ../ril/src/ril_atResponse.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_atResponse.d" -MT"ril/src/ril_atResponse.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_atResponse.o" "../ril/src/ril_atResponse.c"
+../ril/src/ril_atResponse.c: In function 'Ql_RIL_AT_SetErrCode':
+../ril/src/ril_atResponse.c:50:1: warning: control reaches end of non-void function [-Wreturn-type]
+'Finished building: ../ril/src/ril_atResponse.c'
+' '
+'Building file: ../ril/src/ril_audio.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_audio.d" -MT"ril/src/ril_audio.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_audio.o" "../ril/src/ril_audio.c"
+../ril/src/ril_audio.c: In function 'ATResponse_AUD_handler':
+../ril/src/ril_audio.c:399:5: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+'Finished building: ../ril/src/ril_audio.c'
+' '
+'Building file: ../ril/src/ril_bluetooth.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_bluetooth.d" -MT"ril/src/ril_bluetooth.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_bluetooth.o" "../ril/src/ril_bluetooth.c"
+../ril/src/ril_bluetooth.c: In function 'OnURCHandler_BTDisconn':
+../ril/src/ril_bluetooth.c:1531:10: warning: unused variable 'profileId' [-Wunused-variable]
+'Finished building: ../ril/src/ril_bluetooth.c'
+' '
+'Building file: ../ril/src/ril_custom.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_custom.d" -MT"ril/src/ril_custom.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_custom.o" "../ril/src/ril_custom.c"
+'Finished building: ../ril/src/ril_custom.c'
+' '
+'Building file: ../ril/src/ril_dtmf.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_dtmf.d" -MT"ril/src/ril_dtmf.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_dtmf.o" "../ril/src/ril_dtmf.c"
+'Finished building: ../ril/src/ril_dtmf.c'
+' '
+'Building file: ../ril/src/ril_ftp.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_ftp.d" -MT"ril/src/ril_ftp.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_ftp.o" "../ril/src/ril_ftp.c"
+'Finished building: ../ril/src/ril_ftp.c'
+' '
+'Building file: ../ril/src/ril_http.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_http.d" -MT"ril/src/ril_http.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_http.o" "../ril/src/ril_http.c"
+'Finished building: ../ril/src/ril_http.c'
+' '
+'Building file: ../ril/src/ril_init.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_init.d" -MT"ril/src/ril_init.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_init.o" "../ril/src/ril_init.c"
+'Finished building: ../ril/src/ril_init.c'
+' '
+'Building file: ../ril/src/ril_location.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_location.d" -MT"ril/src/ril_location.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_location.o" "../ril/src/ril_location.c"
+'Finished building: ../ril/src/ril_location.c'
+' '
+'Building file: ../ril/src/ril_network.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_network.d" -MT"ril/src/ril_network.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_network.o" "../ril/src/ril_network.c"
+../ril/src/ril_network.c: In function 'ATRsp_COPS_Handler':
+../ril/src/ril_network.c:501:14: warning: unused variable 'str' [-Wunused-variable]
+'Finished building: ../ril/src/ril_network.c'
+' '
+'Building file: ../ril/src/ril_sim.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_sim.d" -MT"ril/src/ril_sim.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_sim.o" "../ril/src/ril_sim.c"
+../ril/src/ril_sim.c: In function 'ATResponse_SPN_Handler':
+../ril/src/ril_sim.c:328:10: warning: passing argument 1 of 'strtok' from incompatible pointer type [enabled by default]
+In file included from D:\TEST\OpenCPU_SDK\ril\inc/ril.h:37:0,
+                 from ../ril/src/ril_sim.c:34:
+c:\program files (x86)\codesourcery\sourcery_codebench_lite_for_arm_eabi\bin\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/include/string.h:44:8: note: expected 'char *' but argument is of type 'char (*)[50]'
+../ril/src/ril_sim.c:328:16: warning: unused variable 'token' [-Wunused-variable]
+../ril/src/ril_sim.c: In function 'RIL_SIM_GetSPN':
+../ril/src/ril_sim.c:363:4: warning: passing argument 2 of 'Ql_strcpy' from incompatible pointer type [enabled by default]
+In file included from ../ril/src/ril_sim.c:37:0:
+D:\TEST\OpenCPU_SDK\include/ql_stdlib.h:45:7: note: expected 'const char *' but argument is of type 'char (*)[50]'
+'Finished building: ../ril/src/ril_sim.c'
+' '
+'Building file: ../ril/src/ril_system.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_system.d" -MT"ril/src/ril_system.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_system.o" "../ril/src/ril_system.c"
+'Finished building: ../ril/src/ril_system.c'
+' '
+'Building file: ../ril/src/ril_telephony.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_telephony.d" -MT"ril/src/ril_telephony.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_telephony.o" "../ril/src/ril_telephony.c"
+'Finished building: ../ril/src/ril_telephony.c'
+' '
+'Building file: ../ril/src/ril_urc.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_urc.d" -MT"ril/src/ril_urc.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_urc.o" "../ril/src/ril_urc.c"
+../ril/src/ril_urc.c: In function 'OnURCHandler_Recvssl':
+../ril/src/ril_urc.c:252:7: warning: assignment discards 'const' qualifier from pointer target type [enabled by default]
+../ril/src/ril_urc.c:258:7: warning: assignment discards 'const' qualifier from pointer target type [enabled by default]
+../ril/src/ril_urc.c:247:7: warning: variable 'cid' set but not used [-Wunused-but-set-variable]
+../ril/src/ril_urc.c:223:11: warning: unused variable 'p2' [-Wunused-variable]
+In file included from ../ril/src/ril_urc.c:44:0:
+../ril/src/ril_urc.c: At top level:
+D:\TEST\OpenCPU_SDK\custom\extras\inc/debug.h:11:13: warning: 'DBG_BUFFER' defined but not used [-Wunused-variable]
+'Finished building: ../ril/src/ril_urc.c'
+' '
+'Building file: ../ril/src/ril_util.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"ril/src/ril_util.d" -MT"ril/src/ril_util.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "ril/src/ril_util.o" "../ril/src/ril_util.c"
+'Finished building: ../ril/src/ril_util.c'
+' '
+'Building file: ../custom/timer/src/Timers.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/timer/src/Timers.d" -MT"custom/timer/src/Timers.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/timer/src/Timers.o" "../custom/timer/src/Timers.c"
+'Finished building: ../custom/timer/src/Timers.c'
+' '
+'Building file: ../custom/sms/src/sms.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/sms/src/sms.d" -MT"custom/sms/src/sms.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/sms/src/sms.o" "../custom/sms/src/sms.c"
+../custom/sms/src/sms.c: In function 'CmdGetStorageInfo':
+../custom/sms/src/sms.c:1307:5: warning: implicit declaration of function 'Ql_SendATCmd' [-Wimplicit-function-declaration]
+'Finished building: ../custom/sms/src/sms.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTConnectClient.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTConnectClient.d" -MT"custom/mqtt/src/MQTTConnectClient.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTConnectClient.o" "../custom/mqtt/src/MQTTConnectClient.c"
+In file included from D:\TEST\OpenCPU_SDK\custom\extras\inc/common_vars.h:35:0,
+                 from ../custom/mqtt/src/MQTTConnectClient.c:16:
+D:\TEST\OpenCPU_SDK\custom\extras\inc/debug.h:11:13: warning: 'DBG_BUFFER' defined but not used [-Wunused-variable]
+'Finished building: ../custom/mqtt/src/MQTTConnectClient.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTConnectServer.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTConnectServer.d" -MT"custom/mqtt/src/MQTTConnectServer.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTConnectServer.o" "../custom/mqtt/src/MQTTConnectServer.c"
+'Finished building: ../custom/mqtt/src/MQTTConnectServer.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTDeserializePublish.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTDeserializePublish.d" -MT"custom/mqtt/src/MQTTDeserializePublish.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTDeserializePublish.o" "../custom/mqtt/src/MQTTDeserializePublish.c"
+'Finished building: ../custom/mqtt/src/MQTTDeserializePublish.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTFormat.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTFormat.d" -MT"custom/mqtt/src/MQTTFormat.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTFormat.o" "../custom/mqtt/src/MQTTFormat.c"
+'Finished building: ../custom/mqtt/src/MQTTFormat.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTPacket.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTPacket.d" -MT"custom/mqtt/src/MQTTPacket.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTPacket.o" "../custom/mqtt/src/MQTTPacket.c"
+'Finished building: ../custom/mqtt/src/MQTTPacket.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTSerializePublish.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTSerializePublish.d" -MT"custom/mqtt/src/MQTTSerializePublish.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTSerializePublish.o" "../custom/mqtt/src/MQTTSerializePublish.c"
+'Finished building: ../custom/mqtt/src/MQTTSerializePublish.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTSubscribeClient.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTSubscribeClient.d" -MT"custom/mqtt/src/MQTTSubscribeClient.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTSubscribeClient.o" "../custom/mqtt/src/MQTTSubscribeClient.c"
+'Finished building: ../custom/mqtt/src/MQTTSubscribeClient.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTSubscribeServer.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTSubscribeServer.d" -MT"custom/mqtt/src/MQTTSubscribeServer.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTSubscribeServer.o" "../custom/mqtt/src/MQTTSubscribeServer.c"
+'Finished building: ../custom/mqtt/src/MQTTSubscribeServer.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTUnsubscribeClient.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTUnsubscribeClient.d" -MT"custom/mqtt/src/MQTTUnsubscribeClient.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTUnsubscribeClient.o" "../custom/mqtt/src/MQTTUnsubscribeClient.c"
+'Finished building: ../custom/mqtt/src/MQTTUnsubscribeClient.c'
+' '
+'Building file: ../custom/mqtt/src/MQTTUnsubscribeServer.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/MQTTUnsubscribeServer.d" -MT"custom/mqtt/src/MQTTUnsubscribeServer.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/MQTTUnsubscribeServer.o" "../custom/mqtt/src/MQTTUnsubscribeServer.c"
+'Finished building: ../custom/mqtt/src/MQTTUnsubscribeServer.c'
+' '
+'Building file: ../custom/mqtt/src/mqtt.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/mqtt/src/mqtt.d" -MT"custom/mqtt/src/mqtt.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/mqtt/src/mqtt.o" "../custom/mqtt/src/mqtt.c"
+../custom/mqtt/src/mqtt.c: In function 'MQTT_Packet_Process':
+../custom/mqtt/src/mqtt.c:606:34: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+../custom/mqtt/src/mqtt.c:743:8: warning: pointer targets in passing argument 1 of 'Ql_strcpy' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\extras\inc/common_vars.h:20:0,
+                 from ../custom/mqtt/src/mqtt.c:26:
+D:\TEST\OpenCPU_SDK\include/ql_stdlib.h:45:7: note: expected 'char *' but argument is of type 'u8 *'
+../custom/mqtt/src/mqtt.c:747:8: warning: implicit declaration of function 'LICENSE_INIT' [-Wimplicit-function-declaration]
+../custom/mqtt/src/mqtt.c:749:8: warning: implicit declaration of function 'Read_License' [-Wimplicit-function-declaration]
+../custom/mqtt/src/mqtt.c: In function 'MQTT_Send_Publish':
+../custom/mqtt/src/mqtt.c:1086:4: warning: pointer targets in passing argument 1 of 'cJSON_CreateString' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\timer\inc/Timer.h:34:0,
+                 from ../custom/mqtt/src/mqtt.c:27:
+D:\TEST\OpenCPU_SDK\custom\cJSON\inc/cJSON.h:193:23: note: expected 'const char *' but argument is of type 'u8 *'
+../custom/mqtt/src/mqtt.c:1090:4: warning: pointer targets in passing argument 1 of 'cJSON_CreateString' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\timer\inc/Timer.h:34:0,
+                 from ../custom/mqtt/src/mqtt.c:27:
+D:\TEST\OpenCPU_SDK\custom\cJSON\inc/cJSON.h:193:23: note: expected 'const char *' but argument is of type 'u8 *'
+../custom/mqtt/src/mqtt.c:1094:4: warning: pointer targets in passing argument 1 of 'cJSON_CreateString' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\timer\inc/Timer.h:34:0,
+                 from ../custom/mqtt/src/mqtt.c:27:
+D:\TEST\OpenCPU_SDK\custom\cJSON\inc/cJSON.h:193:23: note: expected 'const char *' but argument is of type 'u8 *'
+../custom/mqtt/src/mqtt.c:1098:4: warning: pointer targets in passing argument 1 of 'cJSON_CreateString' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\timer\inc/Timer.h:34:0,
+                 from ../custom/mqtt/src/mqtt.c:27:
+D:\TEST\OpenCPU_SDK\custom\cJSON\inc/cJSON.h:193:23: note: expected 'const char *' but argument is of type 'u8 *'
+../custom/mqtt/src/mqtt.c:1658:15: warning: assignment makes integer from pointer without a cast [enabled by default]
+../custom/mqtt/src/mqtt.c:831:7: warning: variable 'msg_id' set but not used [-Wunused-but-set-variable]
+../custom/mqtt/src/mqtt.c: In function 'Process_Device_Twin_Properties':
+../custom/mqtt/src/mqtt.c:1811:2: warning: pointer targets in passing argument 1 of 'cJSON_Parse' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\timer\inc/Timer.h:34:0,
+                 from ../custom/mqtt/src/mqtt.c:27:
+D:\TEST\OpenCPU_SDK\custom\cJSON\inc/cJSON.h:152:23: note: expected 'const char *' but argument is of type 'unsigned char *'
+../custom/mqtt/src/mqtt.c:2248:3: warning: pointer targets in passing argument 1 of 'Ql_strcpy' differ in signedness [-Wpointer-sign]
+In file included from D:\TEST\OpenCPU_SDK\custom\extras\inc/common_vars.h:20:0,
+                 from ../custom/mqtt/src/mqtt.c:26:
+D:\TEST\OpenCPU_SDK\include/ql_stdlib.h:45:7: note: expected 'char *' but argument is of type 'u8 *'
+'Finished building: ../custom/mqtt/src/mqtt.c'
+' '
+'Building file: ../custom/fota/src/file_Operations.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/fota/src/file_Operations.d" -MT"custom/fota/src/file_Operations.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/fota/src/file_Operations.o" "../custom/fota/src/file_Operations.c"
+../custom/fota/src/file_Operations.c: In function 'Read_Persistent_Data':
+../custom/fota/src/file_Operations.c:664:38: warning: assignment makes integer from pointer without a cast [enabled by default]
+../custom/fota/src/file_Operations.c: In function 'Read_IoT_Persistent_Data':
+../custom/fota/src/file_Operations.c:877:42: warning: assignment makes integer from pointer without a cast [enabled by default]
+../custom/fota/src/file_Operations.c: In function 'Write_And_Store_Pending_MQTT_Log_Messages':
+../custom/fota/src/file_Operations.c:1028:2: warning: array subscript has type 'char' [-Wchar-subscripts]
+../custom/fota/src/file_Operations.c:1035:23: warning: assignment makes integer from pointer without a cast [enabled by default]
+../custom/fota/src/file_Operations.c:1041:3: warning: array subscript has type 'char' [-Wchar-subscripts]
+../custom/fota/src/file_Operations.c:1041:35: warning: assignment makes integer from pointer without a cast [enabled by default]
+../custom/fota/src/file_Operations.c: In function 'Read_License':
+../custom/fota/src/file_Operations.c:1215:3: warning: pointer targets in passing argument 1 of 'fileSys_getFileSize' differ in signedness [-Wpointer-sign]
+../custom/fota/src/file_Operations.c:407:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/fota/src/file_Operations.c:1274:4: warning: implicit declaration of function 'RIL_SSL_QSSLCERTIFICATE_DEL' [-Wimplicit-function-declaration]
+../custom/fota/src/file_Operations.c:1275:4: warning: implicit declaration of function 'RIL_SSL_QSSLCERTIFICATE_WRITE' [-Wimplicit-function-declaration]
+../custom/fota/src/file_Operations.c:1276:4: warning: implicit declaration of function 'RIL_SSL_QSSLCERTIFICATE_READ' [-Wimplicit-function-declaration]
+../custom/fota/src/file_Operations.c:1207:7: warning: unused variable 'parameter_ID_temp' [-Wunused-variable]
+'Finished building: ../custom/fota/src/file_Operations.c'
+' '
+'Building file: ../custom/fota/src/fota_app.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/fota/src/fota_app.d" -MT"custom/fota/src/fota_app.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/fota/src/fota_app.o" "../custom/fota/src/fota_app.c"
+../custom/fota/src/fota_app.c: In function 'FIRMWARE_Update':
+../custom/fota/src/fota_app.c:214:2: warning: pointer targets in passing argument 1 of 'fileSys_getFileSize' differ in signedness [-Wpointer-sign]
+../custom/fota/src/fota_app.c:29:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/fota/src/fota_app.c: In function 'Callback_HTTPS_RecvData':
+../custom/fota/src/fota_app.c:600:6: warning: unused variable 'i' [-Wunused-variable]
+../custom/fota/src/fota_app.c: At top level:
+../custom/fota/src/fota_app.c:652:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+../custom/fota/src/fota_app.c:759:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+../custom/fota/src/fota_app.c: In function 'LICENSE_INIT':
+../custom/fota/src/fota_app.c:824:1: warning: control reaches end of non-void function [-Wreturn-type]
+'Finished building: ../custom/fota/src/fota_app.c'
+' '
+'Building file: ../custom/extras/src/SysCalls.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/extras/src/SysCalls.d" -MT"custom/extras/src/SysCalls.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/extras/src/SysCalls.o" "../custom/extras/src/SysCalls.c"
+'Finished building: ../custom/extras/src/SysCalls.c'
+' '
+'Building file: ../custom/config/custom_sys_cfg.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/config/custom_sys_cfg.d" -MT"custom/config/custom_sys_cfg.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/config/custom_sys_cfg.o" "../custom/config/custom_sys_cfg.c"
+'Finished building: ../custom/config/custom_sys_cfg.c'
+' '
+'Building file: ../custom/config/sys_config.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/config/sys_config.d" -MT"custom/config/sys_config.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/config/sys_config.o" "../custom/config/sys_config.c"
+'Finished building: ../custom/config/sys_config.c'
+' '
+'Building file: ../custom/cJSON/src/cJSON.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/cJSON/src/cJSON.d" -MT"custom/cJSON/src/cJSON.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/cJSON/src/cJSON.o" "../custom/cJSON/src/cJSON.c"
+../custom/cJSON/src/cJSON.c: In function 'ensure':
+../custom/cJSON/src/cJSON.c:320:15: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+../custom/cJSON/src/cJSON.c:322:5: warning: pointer targets in return differ in signedness [-Wpointer-sign]
+'Finished building: ../custom/cJSON/src/cJSON.c'
+' '
+'Building file: ../custom/TFTDisplay/src/st7735.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/TFTDisplay/src/st7735.d" -MT"custom/TFTDisplay/src/st7735.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/TFTDisplay/src/st7735.o" "../custom/TFTDisplay/src/st7735.c"
+../custom/TFTDisplay/src/st7735.c: In function 'ST7735_drawString_for_BALANCE_align_Center':
+../custom/TFTDisplay/src/st7735.c:484:3: warning: implicit declaration of function 'Font_BigFont' [-Wimplicit-function-declaration]
+../custom/TFTDisplay/src/st7735.c:488:3: warning: implicit declaration of function 'Font_Grotesk16x32' [-Wimplicit-function-declaration]
+../custom/TFTDisplay/src/st7735.c: At top level:
+../custom/TFTDisplay/src/st7735.c:534:6: warning: conflicting types for 'Font_BigFont' [enabled by default]
+../custom/TFTDisplay/src/st7735.c:484:3: note: previous implicit declaration of 'Font_BigFont' was here
+../custom/TFTDisplay/src/st7735.c: In function 'Font_BigFont':
+../custom/TFTDisplay/src/st7735.c:541:18: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+../custom/TFTDisplay/src/st7735.c:537:6: warning: unused variable 'z' [-Wunused-variable]
+../custom/TFTDisplay/src/st7735.c: At top level:
+../custom/TFTDisplay/src/st7735.c:594:6: warning: conflicting types for 'Font_Grotesk16x32' [enabled by default]
+../custom/TFTDisplay/src/st7735.c:488:3: note: previous implicit declaration of 'Font_Grotesk16x32' was here
+../custom/TFTDisplay/src/st7735.c: In function 'Font_Grotesk16x32':
+../custom/TFTDisplay/src/st7735.c:601:19: warning: variable 'temp' set but not used [-Wunused-but-set-variable]
+../custom/TFTDisplay/src/st7735.c:597:6: warning: unused variable 'z' [-Wunused-variable]
+In file included from D:\TEST\OpenCPU_SDK\custom\extras\inc/common_vars.h:35:0,
+                 from ../custom/TFTDisplay/src/st7735.c:5:
+../custom/TFTDisplay/src/st7735.c: At top level:
+D:\TEST\OpenCPU_SDK\custom\extras\inc/debug.h:11:13: warning: 'DBG_BUFFER' defined but not used [-Wunused-variable]
+'Finished building: ../custom/TFTDisplay/src/st7735.c'
+' '
+'Building file: ../custom/SecureSocket/src/Network_Time.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/SecureSocket/src/Network_Time.d" -MT"custom/SecureSocket/src/Network_Time.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/SecureSocket/src/Network_Time.o" "../custom/SecureSocket/src/Network_Time.c"
+In file included from ../custom/SecureSocket/src/Network_Time.c:42:0:
+D:\TEST\OpenCPU_SDK\custom\extras\inc/debug.h:11:13: warning: 'DBG_BUFFER' defined but not used [-Wunused-variable]
+'Finished building: ../custom/SecureSocket/src/Network_Time.c'
+' '
+'Building file: ../custom/SecureSocket/src/SecureSocket.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/SecureSocket/src/SecureSocket.d" -MT"custom/SecureSocket/src/SecureSocket.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/SecureSocket/src/SecureSocket.o" "../custom/SecureSocket/src/SecureSocket.c"
+../custom/SecureSocket/src/SecureSocket.c: In function 'RIL_SSL_QSSLSEND':
+../custom/SecureSocket/src/SecureSocket.c:341:21: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+../custom/SecureSocket/src/SecureSocket.c: In function 'ATResponse_SSL_handler_CERTIFICATE_WRITE':
+../custom/SecureSocket/src/SecureSocket.c:508:29: warning: comparison between pointer and integer [enabled by default]
+../custom/SecureSocket/src/SecureSocket.c:517:29: warning: comparison between pointer and integer [enabled by default]
+../custom/SecureSocket/src/SecureSocket.c: In function 'ATResponse_QSSLCFG_handler':
+../custom/SecureSocket/src/SecureSocket.c:851:8: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+../custom/SecureSocket/src/SecureSocket.c: In function 'Connect_Azure_IoT':
+../custom/SecureSocket/src/SecureSocket.c:1066:4: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLOPEN' differ in signedness [-Wpointer-sign]
+../custom/SecureSocket/src/SecureSocket.c:297:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/SecureSocket/src/SecureSocket.c:1088:5: warning: pointer targets in passing argument 2 of 'RIL_SSL_QSSLSEND' differ in signedness [-Wpointer-sign]
+../custom/SecureSocket/src/SecureSocket.c:334:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/SecureSocket/src/SecureSocket.c:1095:5: warning: pointer targets in passing argument 2 of 'RIL_SSL_QSSLSEND' differ in signedness [-Wpointer-sign]
+../custom/SecureSocket/src/SecureSocket.c:334:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/SecureSocket/src/SecureSocket.c:1114:4: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLOPEN' differ in signedness [-Wpointer-sign]
+../custom/SecureSocket/src/SecureSocket.c:297:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/SecureSocket/src/SecureSocket.c: In function 'Connect_Azure_IoT_host_socket':
+../custom/SecureSocket/src/SecureSocket.c:1152:3: warning: implicit declaration of function 'Refresh_Cloud_Connectivity_Symbol' [-Wimplicit-function-declaration]
+../custom/SecureSocket/src/SecureSocket.c: At top level:
+../custom/SecureSocket/src/SecureSocket.c:849:12: warning: 'ATResponse_QSSLCFG_handler' defined but not used [-Wunused-function]
+'Finished building: ../custom/SecureSocket/src/SecureSocket.c'
+' '
+'Building file: ../custom/IPC/src/ipc.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/IPC/src/ipc.d" -MT"custom/IPC/src/ipc.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/IPC/src/ipc.o" "../custom/IPC/src/ipc.c"
+'Finished building: ../custom/IPC/src/ipc.c'
+' '
+'Building file: ../custom/main.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF"custom/main.d" -MT"custom/main.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "custom/main.o" "../custom/main.c"
+../custom/main.c: In function 'CallBack_UART_MAIN_Hdlr':
+../custom/main.c:245:3: warning: pointer targets in passing argument 2 of 'Ql_UART_Read' differ in signedness [-Wpointer-sign]
+In file included from ../custom/main.c:42:0:
+D:\TEST\OpenCPU_SDK\include/ql_uart.h:297:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:303:4: warning: pointer targets in passing argument 2 of 'Ql_UART_Read' differ in signedness [-Wpointer-sign]
+In file included from ../custom/main.c:42:0:
+D:\TEST\OpenCPU_SDK\include/ql_uart.h:297:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:308:5: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_DEL' differ in signedness [-Wpointer-sign]
+../custom/main.c:90:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:309:5: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_WRITE' differ in signedness [-Wpointer-sign]
+../custom/main.c:89:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:309:5: warning: pointer targets in passing argument 2 of 'RIL_SSL_QSSLCERTIFICATE_WRITE' differ in signedness [-Wpointer-sign]
+../custom/main.c:89:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:313:6: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_READ' differ in signedness [-Wpointer-sign]
+../custom/main.c:91:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:338:4: warning: pointer targets in passing argument 2 of 'Ql_UART_Read' differ in signedness [-Wpointer-sign]
+In file included from ../custom/main.c:42:0:
+D:\TEST\OpenCPU_SDK\include/ql_uart.h:297:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:343:5: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_DEL' differ in signedness [-Wpointer-sign]
+../custom/main.c:90:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:344:5: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_WRITE' differ in signedness [-Wpointer-sign]
+../custom/main.c:89:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:344:5: warning: pointer targets in passing argument 2 of 'RIL_SSL_QSSLCERTIFICATE_WRITE' differ in signedness [-Wpointer-sign]
+../custom/main.c:89:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:348:6: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_READ' differ in signedness [-Wpointer-sign]
+../custom/main.c:91:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:374:4: warning: pointer targets in passing argument 2 of 'Ql_UART_Read' differ in signedness [-Wpointer-sign]
+In file included from ../custom/main.c:42:0:
+D:\TEST\OpenCPU_SDK\include/ql_uart.h:297:5: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:380:5: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_DEL' differ in signedness [-Wpointer-sign]
+../custom/main.c:90:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:381:5: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_WRITE' differ in signedness [-Wpointer-sign]
+../custom/main.c:89:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:381:5: warning: pointer targets in passing argument 2 of 'RIL_SSL_QSSLCERTIFICATE_WRITE' differ in signedness [-Wpointer-sign]
+../custom/main.c:89:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:385:6: warning: pointer targets in passing argument 1 of 'RIL_SSL_QSSLCERTIFICATE_READ' differ in signedness [-Wpointer-sign]
+../custom/main.c:91:12: note: expected 'u8 *' but argument is of type 'char *'
+../custom/main.c:513:4: warning: pointer targets in passing argument 1 of 'Ql_strcpy' differ in signedness [-Wpointer-sign]
+In file included from ../custom/main.c:39:0:
+D:\TEST\OpenCPU_SDK\include/ql_stdlib.h:45:7: note: expected 'char *' but argument is of type 'u8 *'
+../custom/main.c: In function 'proc_main_task':
+../custom/main.c:812:6: warning: pointer targets in passing argument 2 of 'RIL_SIM_GetSPN' differ in signedness [-Wpointer-sign]
+In file included from ../custom/main.c:33:0:
+D:\TEST\OpenCPU_SDK\ril\inc/ril_sim.h:131:5: note: expected 'u32 *' but argument is of type 's32 *'
+'Finished building: ../custom/main.c'
+' '
+'Building file: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+'Invoking: ARM Windows GCC C Compiler (Sourcery Lite Bare)'
+arm-none-eabi-gcc -D__OCPU_COMPILER_GCC__ -D__MQTT_TEST__ -I"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\include" -I"D:\TEST\OpenCPU_SDK\custom\IPC\inc" -I"D:\TEST\OpenCPU_SDK\custom\cJSON\inc" -I"D:\TEST\OpenCPU_SDK\custom\extras\inc" -I"D:\TEST\OpenCPU_SDK\custom\SecureSocket\inc" -I"D:\TEST\OpenCPU_SDK\custom\timer\inc" -I"D:\TEST\OpenCPU_SDK\include" -I"D:\TEST\OpenCPU_SDK\custom\mqtt\inc" -I"D:\TEST\OpenCPU_SDK\custom\TFTDisplay\inc" -I"D:\TEST\OpenCPU_SDK\ril\inc" -I"D:\TEST\OpenCPU_SDK\custom\config" -I"D:\TEST\OpenCPU_SDK\custom\fota\inc" -I"D:\TEST\OpenCPU_SDK\custom\sms\inc" -O2 -Wall -std=c99 -c -fmessage-length=0 -mlong-calls -Wstrict-prototypes -MMD -MP -MF".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -MT".metadata/.plugins/org.eclipse.cdt.make.core/specs.d" -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o ".metadata/.plugins/org.eclipse.cdt.make.core/specs.o" "../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c"
+'Finished building: ../.metadata/.plugins/org.eclipse.cdt.make.core/specs.c'
+' '
+'Building target: APPGS3MDM32A01.elf'
+'Invoking: ARM Windows GCC C Linker (Sourcery Lite Bare)'
+arm-none-eabi-gcc -T"D:\TEST\OpenCPU_SDK\libs\gcc\linkscript.ld" -nostartfiles -Xlinker --gc-sections -L"D:\TEST\OpenCPU_SDK\libs\gcc" -L"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\arm-none-eabi\lib\thumb" -L"C:\Program Files (x86)\CodeSourcery\Sourcery_CodeBench_Lite_for_ARM_EABI\lib\gcc\arm-none-eabi\4.7.2\thumb" -Wl,-Map,"APPGS3MDM32A01.map" -Rbuild -march=armv5te -mthumb-interwork -mfloat-abi=soft -g3 -o "APPGS3MDM32A01.elf"  ./ril/src/ril_alarm.o ./ril/src/ril_atResponse.o ./ril/src/ril_audio.o ./ril/src/ril_bluetooth.o ./ril/src/ril_custom.o ./ril/src/ril_dtmf.o ./ril/src/ril_ftp.o ./ril/src/ril_http.o ./ril/src/ril_init.o ./ril/src/ril_location.o ./ril/src/ril_network.o ./ril/src/ril_sim.o ./ril/src/ril_system.o ./ril/src/ril_telephony.o ./ril/src/ril_urc.o ./ril/src/ril_util.o  ./custom/timer/src/Timers.o  ./custom/sms/src/sms.o  ./custom/mqtt/src/MQTTConnectClient.o ./custom/mqtt/src/MQTTConnectServer.o ./custom/mqtt/src/MQTTDeserializePublish.o ./custom/mqtt/src/MQTTFormat.o ./custom/mqtt/src/MQTTPacket.o ./custom/mqtt/src/MQTTSerializePublish.o ./custom/mqtt/src/MQTTSubscribeClient.o ./custom/mqtt/src/MQTTSubscribeServer.o ./custom/mqtt/src/MQTTUnsubscribeClient.o ./custom/mqtt/src/MQTTUnsubscribeServer.o ./custom/mqtt/src/mqtt.o  ./custom/fota/src/file_Operations.o ./custom/fota/src/fota_app.o  ./custom/extras/src/SysCalls.o  ./custom/config/custom_sys_cfg.o ./custom/config/sys_config.o  ./custom/cJSON/src/cJSON.o  ./custom/TFTDisplay/src/st7735.o  ./custom/SecureSocket/src/Network_Time.o ./custom/SecureSocket/src/SecureSocket.o  ./custom/IPC/src/ipc.o  ./custom/main.o  ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o   -lapp_start -lm -lc -lcs3 -lgcc
+'Finished building target: APPGS3MDM32A01.elf'
+' '
+D:/TEST/OpenCPU_SDK/make/make --no-print-directory post-build
+copy /y D:\TEST\OpenCPU_SDK\libs\app_image_bin.cfg D:\TEST\OpenCPU_SDK\Debug\app_image_bin.cfg
+        1 file(s) copied.
+' '
+'Invoking: ARM Windows GNU Create Flash Image (Sourcery Lite Bare)'
+arm-none-eabi-objcopy -O binary "APPGS3MDM32A01.elf"  "APPGS3MDM32A01.bin"
+'Finished building: APPGS3MDM32A01.bin'
+' '
+'Invoking: ARM Windows GNU Create Listing (Sourcery Lite Bare)'
+arm-none-eabi-objdump -h -S "APPGS3MDM32A01.elf" > "APPGS3MDM32A01.lst"
+'Finished building: APPGS3MDM32A01.lst'
+' '
+'Invoking: ARM Windows GNU Print Size (Sourcery Lite Bare)'
+arm-none-eabi-size  --format=berkeley "APPGS3MDM32A01.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 176358	  12312	  38476	 227146	  3774a	APPGS3MDM32A01.elf
+'Finished building: APPGS3MDM32A01.siz'
+' '

@@ -1,0 +1,18 @@
+Version : 1.21
+- Corrected modbus negative responce
+- Added Entry Exit messages
+- Added new CONFIG_STATE and written both CONFIG_STATE And FUNCTIONAL_STATE in SD Card
+
+Version : 1.22
+- FC : 0 (Error) Handled
+- UART 485 made configurable
+
+Version : 1.23
+- Corrected File Structure
+- All Configuration data are read from SD Card.(MQTT Messages and Factory configuration).
+- factCfg file Update to SD Card
+- Added Watchdog timer
+
+Version : 1.24
+- corrected the debug messages of modbus query for verificetion and normal
+- IoT Hub User Name is taken from SD Card FactCfg.txt 
